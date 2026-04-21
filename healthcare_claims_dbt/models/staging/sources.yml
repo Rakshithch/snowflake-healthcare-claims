@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: claims
+    database: HEALTHCARE_DB
+    schema: CLAIMS
+    tables:
+      - name: RAW_CLAIMS
+        description: Raw healthcare claims data
