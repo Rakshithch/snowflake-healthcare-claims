@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_claims
+    description: "Cleaned and standardized healthcare claims from raw source"
+    columns:
+      - name: claim_id
+        description: "Unique identifier for each claim"
+        tests:
+          - unique
+          - not_null
+
+      - name: patient_id
+        description: "Patient identifier"
+        tests:
+          - not_null
+
+      - name: provider_id
+        description: "Provider identifier"
+        tests:
+          - not_null
+
+      - name: claim_status
+        description: "Status of the claim"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAID', 'DENIED', 'PENDING', 'ADJUSTED']
+
+      - name: payer_type
+        description: "Type of payer"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['MEDICARE', 'MEDICAID', 'COMMERCIAL']
+
+      - name: paid_amount
+        description: "Amount paid for the claim"
+        tests:
+          - not_null
+
+      - name: claim_date
+        description: "Date the claim was submitted"
+        tests:
+          - not_null

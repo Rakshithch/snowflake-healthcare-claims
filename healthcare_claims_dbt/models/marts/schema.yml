@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_claims_summary
+    description: "Aggregated claims summary by payer type, month, and state"
+    columns:
+      - name: payer_type
+        description: "Type of payer (Medicare, Medicaid, Commercial)"
+        tests:
+          - not_null
+
+      - name: claim_month
+        description: "Month the claims were submitted (truncated to first of month)"
+        tests:
+          - not_null
+
+      - name: state
+        description: "State where the claim was submitted"
+        tests:
+          - not_null
+
+      - name: total_claims
+        description: "Total number of claims in this grouping"
+        tests:
+          - not_null
+
+      - name: denial_rate_pct
+        description: "Percentage of claims denied in this grouping"
+        tests:
+          - not_null
